@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'models/products.dart';
-import 'screens/product_detail_screen.dart';
-import 'screens/products_overview_screen.dart';
+import 'views/product_detail_screen.dart';
+import 'views/products_overview_screen.dart';
 
 final settings = ValueNotifier(
   ThemeSettings(
