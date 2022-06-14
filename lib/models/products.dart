@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
+import 'product.dart';
 
 class Products with ChangeNotifier {
   final List<Product> _items = [
@@ -27,6 +27,22 @@ class Products with ChangeNotifier {
       price: 19.99,
       imageUrl:
           'https://cdn.pixabay.com/photo/2016/11/14/03/19/umbrella-1822478_960_720.jpg',
+    ),
+    Product(
+      id: 'p4',
+      title: 'Pants',
+      description: 'Fashionable and modern design.',
+      price: 99.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2017/03/24/19/48/jeans-2172032_960_720.jpg',
+    ),
+    Product(
+      id: 'p5',
+      title: 'Shirt',
+      description: 'Designed with care.',
+      price: 47.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2014/08/05/10/31/waiting-410328_960_720.jpg',
     ),
   ];
 
