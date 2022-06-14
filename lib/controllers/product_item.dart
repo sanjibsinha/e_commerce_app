@@ -19,10 +19,10 @@ class ProductItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         footer: GridTileBar(
-          backgroundColor: Colors.black26,
+          backgroundColor: Colors.yellow.shade900,
           leading: IconButton(
             icon: const Icon(Icons.favorite),
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onSecondary,
             onPressed: () {},
           ),
           title: Text(
