@@ -6,6 +6,8 @@ import '../models/products.dart';
 class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail';
 
+  /// product detail page
+  ///
   const ProductDetailScreen({Key? key}) : super(key: key);
 
   @override
@@ -19,6 +21,15 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
+      ),
+      body: Container(
+        width: 350.0,
+        height: 350.0,
+        margin: const EdgeInsets.all(20.0),
+        child: Image.network(
+          loadedProduct.imageUrl,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
