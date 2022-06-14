@@ -19,10 +19,10 @@ class ProductItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         footer: GridTileBar(
-          backgroundColor: Colors.black87,
+          backgroundColor: Colors.black26,
           leading: IconButton(
             icon: const Icon(Icons.favorite),
-            color: Theme.of(context).colorScheme.secondary,
+            color: Theme.of(context).colorScheme.onPrimary,
             onPressed: () {},
           ),
           title: Text(
@@ -30,8 +30,9 @@ class ProductItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.shopping_cart,
+              color: Theme.of(context).colorScheme.onPrimary,
             ),
             onPressed: () {},
             color: Theme.of(context).colorScheme.secondary,
