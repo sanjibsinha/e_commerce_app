@@ -3,13 +3,13 @@ import 'package:e_commerce_app/models/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'providers/products.dart';
+import 'models/products.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
 
 final settings = ValueNotifier(
   ThemeSettings(
-    sourceColor: Colors.yellow.shade900,
+    sourceColor: const Color.fromARGB(255, 240, 10, 182),
     themeMode: ThemeMode.system,
   ),
 );
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = ThemeProvider.of(context);
     return MaterialApp(
-      title: 'MyShop',
+      title: 'E Commerce App',
       theme: theme.dark(settings.value.sourceColor),
       home: const ProductsOverviewScreen(),
       routes: {
