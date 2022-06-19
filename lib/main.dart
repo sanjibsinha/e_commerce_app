@@ -42,14 +42,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'E Commerce App',
       theme: theme.dark(settings.value.sourceColor),
-      /* home: const ProductsOverviewScreen(),
+      home: const ProductsOverviewScreen(),
       routes: {
         ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-      }, */
-      home: const DeliverMessage(),
+      },
+      /* home: const DeliverMessage(),
       routes: {
         ExtractingMessage.routeName: (ctx) => const ExtractingMessage(),
-      },
+      }, */
     );
   }
 }
