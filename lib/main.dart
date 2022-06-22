@@ -19,9 +19,11 @@ final settings = ValueNotifier(
 ///
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => Products(),
-      builder: (context, _) => DynamicColorBuilder(
+    MultiProvider(
+      providers: [
+        Provider<Products>(create: (_) => Products()),
+      ],
+      child: DynamicColorBuilder(
         builder: (lightDynamic, darkDynamic) => ThemeProvider(
           lightDynamic: lightDynamic,
           darkDynamic: darkDynamic,
@@ -35,7 +37,19 @@ void main() {
 
 /// changed to seven
 ///
-
+/**
+ * ChangeNotifierProvider(
+      create: (context) => Products(),
+      builder: (context, _) => DynamicColorBuilder(
+        builder: (lightDynamic, darkDynamic) => ThemeProvider(
+          lightDynamic: lightDynamic,
+          darkDynamic: darkDynamic,
+          settings: settings,
+          child: const MyApp(),
+        ),
+      ),
+    ),
+ */
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
