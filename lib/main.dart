@@ -1,7 +1,6 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:e_commerce_app/models/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'models/products.dart';
@@ -19,11 +18,9 @@ final settings = ValueNotifier(
 ///
 void main() {
   runApp(
-    MultiProvider(
-      providers: [
-        Provider<Products>(create: (_) => Products()),
-      ],
-      child: DynamicColorBuilder(
+    ChangeNotifierProvider.value(
+      value: Products(),
+      builder: (context, _) => DynamicColorBuilder(
         builder: (lightDynamic, darkDynamic) => ThemeProvider(
           lightDynamic: lightDynamic,
           darkDynamic: darkDynamic,
@@ -35,21 +32,6 @@ void main() {
   );
 }
 
-/// changed to seven
-///
-/**
- * ChangeNotifierProvider(
-      create: (context) => Products(),
-      builder: (context, _) => DynamicColorBuilder(
-        builder: (lightDynamic, darkDynamic) => ThemeProvider(
-          lightDynamic: lightDynamic,
-          darkDynamic: darkDynamic,
-          settings: settings,
-          child: const MyApp(),
-        ),
-      ),
-    ),
- */
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -66,3 +48,25 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+/**
+ * 
+ * class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider.value(
+      value: Products(),
+      child: MaterialApp(
+          title: 'MyShop',
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.deepOrange,
+            fontFamily: 'Lato',
+          ),
+          home: ProductsOverviewScreen(),
+          routes: {
+            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          }),
+    );
+  }
+}
+ */
