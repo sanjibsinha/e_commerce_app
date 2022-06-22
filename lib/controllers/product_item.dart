@@ -1,53 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/product.dart';
 import '../views/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
-  final String id;
-  final String title;
-  final String imageUrl;
-
-  const ProductItem(
-    this.id,
-    this.title,
-    this.imageUrl,
-  );
+  const ProductItem();
 
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.routeName,
+              arguments: product.id,
+            );
+          },
+          child: Image.network(
+            product.imageUrl,
+            fit: BoxFit.cover,
+          ),
+        ),
         footer: GridTileBar(
-          backgroundColor: Colors.yellow.shade900,
+          backgroundColor: Colors.black87,
           leading: IconButton(
-            icon: const Icon(Icons.favorite),
-            color: Theme.of(context).colorScheme.onSecondary,
-            onPressed: () {},
+            icon: Icon(
+              product.isFavorite ? Icons.favorite : Icons.favorite_border,
+            ),
+            color: Theme.of(context).accentColor,
+            onPressed: () {
+              product.changeStateOfFavorite();
+            },
           ),
           title: Text(
-            title,
+            product.title,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
             icon: Icon(
               Icons.shopping_cart,
-              color: Theme.of(context).colorScheme.onPrimary,
             ),
             onPressed: () {},
-            color: Theme.of(context).colorScheme.secondary,
-          ),
-        ),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              ProductDetailScreen.routeName,
-              arguments: id,
-            );
-          },
-          child: Image.network(
-            imageUrl,
-            fit: BoxFit.cover,
+            color: Theme.of(context).accentColor,
           ),
         ),
       ),
