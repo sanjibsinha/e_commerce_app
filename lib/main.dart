@@ -14,7 +14,7 @@ final settings = ValueNotifier(
   ),
 );
 
-/// creating a new branch
+/// creating a new branch Consumer
 ///
 void main() {
   runApp(
@@ -37,20 +37,6 @@ void main() {
   );
 }
 
-/**
- * ChangeNotifierProvider.value(
-      value: Products(),
-      builder: (context, _) => DynamicColorBuilder(
-        builder: (lightDynamic, darkDynamic) => ThemeProvider(
-          lightDynamic: lightDynamic,
-          darkDynamic: darkDynamic,
-          settings: settings,
-          child: const MyApp(),
-        ),
-      ),
-    ),
- * 
- */
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

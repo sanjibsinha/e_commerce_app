@@ -15,6 +15,9 @@ class ProductItem extends StatelessWidget {
       child: GridTile(
         footer: GridTileBar(
           backgroundColor: Theme.of(context).colorScheme.background,
+
+          /// Consumer will only update the Iconbutton
+          ///
           leading: Consumer<Product>(
             builder: (ctx, product, child) => IconButton(
               icon: Icon(
