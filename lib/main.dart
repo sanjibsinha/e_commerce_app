@@ -45,7 +45,8 @@ class MyApp extends StatelessWidget {
     final theme = ThemeProvider.of(context);
     return MaterialApp(
       title: 'E Commerce App',
-      theme: theme.dark(settings.value.sourceColor),
+      debugShowCheckedModeBanner: false,
+      theme: theme.light(settings.value.sourceColor),
       home: const ProductsOverviewScreen(),
       routes: {
         ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
@@ -53,25 +54,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/**
- * 
- * class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: Products(),
-      child: MaterialApp(
-          title: 'MyShop',
-          theme: ThemeData(
-            primarySwatch: Colors.purple,
-            accentColor: Colors.deepOrange,
-            fontFamily: 'Lato',
-          ),
-          home: ProductsOverviewScreen(),
-          routes: {
-            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-          }),
-    );
-  }
-}
- */
