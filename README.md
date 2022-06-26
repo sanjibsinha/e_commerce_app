@@ -1,5 +1,7 @@
 # E-Commerce App in Flutter
 
+### A step by step guide to build an E-Commerce App. While doing this, each branch exposes many new features of Flutter 3.0 and Material You design.
+
 # I share my learning experience on Flutter, Dart, and Algorithm in - [https://sanjibsinha.com](https://sanjibsinha.com)
 
 There are lot of tips and tricks that might be useful for beginners. 
