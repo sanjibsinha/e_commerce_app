@@ -1,7 +1,8 @@
-import 'package:dynamic_color/dynamic_color.dart';
-import 'package:e_commerce_app/models/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:dynamic_color/dynamic_color.dart';
+import 'models/cart_model.dart';
+import 'models/theme.dart';
 
 import 'models/products.dart';
 import 'views/product_detail_screen.dart';
@@ -43,14 +44,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ThemeProvider.of(context);
-    return MaterialApp(
-      title: 'E Commerce App',
-      debugShowCheckedModeBanner: false,
-      theme: theme.light(settings.value.sourceColor),
-      home: const ProductsOverviewScreen(),
-      routes: {
-        ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-      },
+    return ChangeNotifierProvider(
+      create: (_) => CartModel(),
+      builder: (context, _) => MaterialApp(
+        title: 'E Commerce App',
+        debugShowCheckedModeBanner: false,
+        theme: theme.light(settings.value.sourceColor),
+        home: const ProductsOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+        },
+      ),
     );
   }
 }
