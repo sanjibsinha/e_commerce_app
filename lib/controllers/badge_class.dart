@@ -8,7 +8,7 @@ class BadgeClass extends StatelessWidget {
     required this.color,
   }) : super(key: key);
 
-  final Widget child;
+  final Widget? child;
   final String value;
   final Color color;
 
@@ -17,7 +17,7 @@ class BadgeClass extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        child,
+        child!,
         Positioned(
           right: 8,
           top: 8,

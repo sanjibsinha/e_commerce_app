@@ -32,9 +32,6 @@ void main() {
             ),
           ),
         ),
-        ChangeNotifierProvider(
-          create: (_) => CartModel(),
-        ),
       ],
       child: const MyApp(),
     ),
@@ -47,14 +44,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ThemeProvider.of(context);
-    return MaterialApp(
-      title: 'E Commerce App',
-      debugShowCheckedModeBanner: false,
-      theme: theme.light(settings.value.sourceColor),
-      home: const ProductsOverviewScreen(),
-      routes: {
-        ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-      },
+    return ChangeNotifierProvider(
+      create: (_) => CartModel(),
+      builder: (context, _) => MaterialApp(
+        title: 'E Commerce App',
+        debugShowCheckedModeBanner: false,
+        theme: theme.light(settings.value.sourceColor),
+        home: const ProductsOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+        },
+      ),
     );
   }
 }
