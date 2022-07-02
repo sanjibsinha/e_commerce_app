@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../controllers/badge_class.dart';
 import '../controllers/products_grid.dart';
+import '../models/cart_model.dart';
 
 enum FilterOptions {
   favorites,
@@ -20,7 +23,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('E-Commerce App'),
+        title: const Text('E Commerce App'),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
@@ -45,6 +48,19 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 child: Text('Show All'),
               ),
             ],
+          ),
+          Consumer<CartModel>(
+            builder: (_, cart, child) => BadgeClass(
+              value: cart.itemCount.toString(),
+              color: Theme.of(context).colorScheme.background,
+              child: const Text('Text'),
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.shopping_cart,
+              ),
+              onPressed: () {},
+            ),
           ),
         ],
       ),
