@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dynamic_color/dynamic_color.dart';
@@ -15,7 +17,7 @@ final settings = ValueNotifier(
   ),
 );
 
-/// creating a new branch Consumer
+/// creating a new branch adding cart
 ///
 void main() {
   runApp(
@@ -23,17 +25,19 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => Products(),
-          builder: (context, _) => DynamicColorBuilder(
-            builder: (lightDynamic, darkDynamic) => ThemeProvider(
-              lightDynamic: lightDynamic,
-              darkDynamic: darkDynamic,
-              settings: settings,
-              child: const MyApp(),
-            ),
-          ),
         ),
+        ChangeNotifierProvider(
+          create: (context) => CartModel(),
+        )
       ],
-      child: const MyApp(),
+      child: DynamicColorBuilder(
+        builder: (lightDynamic, darkDynamic) => ThemeProvider(
+          lightDynamic: lightDynamic,
+          darkDynamic: darkDynamic,
+          settings: settings,
+          child: const MyApp(),
+        ),
+      ),
     ),
   );
 }
@@ -44,17 +48,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ThemeProvider.of(context);
-    return ChangeNotifierProvider(
-      create: (_) => CartModel(),
-      builder: (context, _) => MaterialApp(
-        title: 'E Commerce App',
-        debugShowCheckedModeBanner: false,
-        theme: theme.light(settings.value.sourceColor),
-        home: const ProductsOverviewScreen(),
-        routes: {
-          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-        },
-      ),
+    return MaterialApp(
+      title: 'E Commerce App',
+      debugShowCheckedModeBanner: false,
+      theme: theme.light(settings.value.sourceColor),
+      home: const ProductsOverviewScreen(),
+      routes: {
+        ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+      },
     );
   }
 }
