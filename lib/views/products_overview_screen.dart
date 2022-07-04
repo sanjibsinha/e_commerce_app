@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controllers/badge_class.dart';
+import '../controllers/cart_design_controller.dart';
 import '../controllers/products_grid.dart';
 import '../models/cart_model.dart';
 import 'cart_page.dart';
@@ -51,7 +51,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ],
           ),
           Consumer<CartModel>(
-            builder: (_, cart, child) => BadgeClass(
+            builder: (_, cart, child) => CartDesignController(
               value: cart.itemCount.toString(),
               color: Theme.of(context).colorScheme.background,
               child: child,
