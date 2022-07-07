@@ -18,6 +18,7 @@ class ProductDetailScreen extends StatelessWidget {
       context,
       listen: false,
     ).findById(productId);
+    print(productId);
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
