@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:e_commerce_app/models/cart_model.dart';
+import '../models/cart_model.dart';
 
 import '../controllers/cart_item.dart';
+import '../models/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -46,7 +47,13 @@ class CartScreen extends StatelessWidget {
                         color: Theme.of(context).colorScheme.outline,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      /* Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      ); */
+                      cart.clear();
+                    },
                   )
                 ],
               ),

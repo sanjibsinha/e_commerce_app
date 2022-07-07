@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:e_commerce_app/models/cart_model.dart';
+
+import '../models/cart_model.dart';
 
 class CartItem extends StatelessWidget {
   final String id;
@@ -9,7 +10,7 @@ class CartItem extends StatelessWidget {
   final int quantity;
   final String title;
 
-  const CartItem(
+  CartItem(
     this.id,
     this.productId,
     this.price,

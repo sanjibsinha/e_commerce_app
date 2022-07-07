@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-
-//import 'package:e_commerce_app/models/order_model.dart' as order;
 import 'package:intl/intl.dart';
 
-class OrderItem extends StatelessWidget {
-  final order;
+import './../models/orders.dart' as ord;
 
-  const OrderItem(
-    Key? key,
-    this.order,
-  ) : super(key: key);
+class OrderItem extends StatelessWidget {
+  final ord.OrderItem order;
+
+  OrderItem(this.order);
 
   @override
   Widget build(BuildContext context) {
