@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class CartItems {
+class CartItems with ChangeNotifier {
   final String id;
   final String title;
   final int quantity;
