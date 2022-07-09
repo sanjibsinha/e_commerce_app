@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controllers/cart_design_controller.dart';
-import '../controllers/products_grid.dart';
-import '../models/cart_model.dart';
-import 'cart_page.dart';
+import './../controllers/app_drawer.dart';
+import './../controllers/products_grid.dart';
+import './../controllers/badge.dart';
+import '../models/cart.dart';
+import './cart_screen.dart';
 
 enum FilterOptions {
   favorites,
@@ -12,9 +13,8 @@ enum FilterOptions {
 }
 
 class ProductsOverviewScreen extends StatefulWidget {
-  const ProductsOverviewScreen({Key? key}) : super(key: key);
   @override
-  State<ProductsOverviewScreen> createState() => _ProductsOverviewScreenState();
+  _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
@@ -42,7 +42,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             itemBuilder: (_) => [
               const PopupMenuItem(
                 value: FilterOptions.favorites,
-                child: Text('Only Favorites'),
+                child: Text('Only favorites'),
               ),
               const PopupMenuItem(
                 value: FilterOptions.all,
@@ -50,11 +50,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               ),
             ],
           ),
-          Consumer<CartModel>(
-            builder: (_, cart, child) => CartDesignController(
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
               value: cart.itemCount.toString(),
-              color: Theme.of(context).colorScheme.background,
-              child: child,
+              child: ch!,
             ),
             child: IconButton(
               icon: const Icon(
@@ -67,6 +66,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ),
         ],
       ),
+      drawer: AppDrawer(),
       body: ProductsGrid(_showOnlyFavorites),
     );
   }

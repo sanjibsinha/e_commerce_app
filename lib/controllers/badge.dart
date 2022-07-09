@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class CartDesignController extends StatelessWidget {
-  const CartDesignController({
+class Badge extends StatelessWidget {
+  Badge({
     Key? key,
     required this.child,
     required this.value,
-    required this.color,
   }) : super(key: key);
 
-  final Widget? child;
+  final Widget child;
   final String value;
-  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        child!,
+        child,
         Positioned(
           right: 8,
           top: 8,
@@ -25,9 +24,8 @@ class CartDesignController extends StatelessWidget {
             padding: const EdgeInsets.all(2.0),
             // color: Theme.of(context).accentColor,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: color,
-            ),
+                borderRadius: BorderRadius.circular(10.0),
+                color: Theme.of(context).colorScheme.error),
             constraints: const BoxConstraints(
               minWidth: 16,
               minHeight: 16,

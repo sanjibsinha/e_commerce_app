@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/cart_model.dart';
 
-import '../controllers/cart_item.dart';
-import '../models/orders.dart';
+import './../models/cart.dart' show Cart;
+import './../controllers/cart_item.dart';
+import './../models/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
 
-  const CartScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartModel>(context);
+    final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Cart'),
@@ -28,30 +26,25 @@ class CartScreen extends StatelessWidget {
                 children: <Widget>[
                   const Text(
                     'Total',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   const Spacer(),
                   Chip(
                     label: Text(
-                      '\$${cart.itemCount}',
+                      '\$${cart.totalAmount.toStringAsFixed(2)}',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                     ),
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   TextButton(
-                    child: Text(
-                      'ORDER NOW',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.outline,
-                      ),
-                    ),
+                    child: const Text('ORDER NOW'),
                     onPressed: () {
-                      /* Provider.of<Orders>(context, listen: false).addOrder(
-                        cart.items.values.toList()
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
                         cart.totalAmount,
-                      ); */
+                      );
                       cart.clear();
                     },
                   )
