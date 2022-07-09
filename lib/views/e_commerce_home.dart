@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import './../controllers/app_drawer.dart';
 import './../controllers/products_grid.dart';
-import './../controllers/badge.dart';
+import '../controllers/stack_cart.dart';
 import '../models/cart.dart';
 import './cart_screen.dart';
 
@@ -12,12 +12,14 @@ enum FilterOptions {
   all,
 }
 
-class ProductsOverviewScreen extends StatefulWidget {
+class ECommerceHome extends StatefulWidget {
+  const ECommerceHome({Key? key}) : super(key: key);
+
   @override
-  _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
+  State<ECommerceHome> createState() => _ECommerceHomeState();
 }
 
-class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
+class _ECommerceHomeState extends State<ECommerceHome> {
   var _showOnlyFavorites = false;
 
   @override
@@ -51,7 +53,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ],
           ),
           Consumer<Cart>(
-            builder: (_, cart, ch) => Badge(
+            builder: (_, cart, ch) => StackCart(
               value: cart.itemCount.toString(),
               child: ch!,
             ),

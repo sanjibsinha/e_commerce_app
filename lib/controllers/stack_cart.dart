@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
 
-class Badge extends StatelessWidget {
-  Badge({
+class StackCart extends StatelessWidget {
+  const StackCart({
     Key? key,
     required this.child,
     required this.value,
@@ -22,7 +22,6 @@ class Badge extends StatelessWidget {
           top: 8,
           child: Container(
             padding: const EdgeInsets.all(2.0),
-            // color: Theme.of(context).accentColor,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
                 color: Theme.of(context).colorScheme.error),

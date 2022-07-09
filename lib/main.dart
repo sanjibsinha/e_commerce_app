@@ -9,7 +9,7 @@ import 'models/theme.dart';
 import 'views/cart_screen.dart';
 import 'views/orders_screen.dart';
 import 'views/product_detail_screen.dart';
-import 'views/products_overview_screen.dart';
+import 'views/e_commerce_home.dart';
 
 final settings = ValueNotifier(
   ThemeSettings(
@@ -40,15 +40,15 @@ void main() {
           lightDynamic: lightDynamic,
           darkDynamic: darkDynamic,
           settings: settings,
-          child: const MyApp(),
+          child: const ECommerce(),
         ),
       ),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ECommerce extends StatelessWidget {
+  const ECommerce({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
       title: 'E Commerce App',
       debugShowCheckedModeBanner: false,
       theme: theme.light(settings.value.sourceColor),
-      home: ProductsOverviewScreen(),
+      home: const ECommerceHome(),
       routes: {
         ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
         CartScreen.routeName: (ctx) => CartScreen(),
