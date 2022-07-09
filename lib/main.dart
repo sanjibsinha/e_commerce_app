@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dynamic_color/dynamic_color.dart';
-import 'models/cart_model.dart';
-import 'models/theme.dart';
 
+import 'models/cart.dart';
+import 'models/orders.dart';
 import 'models/products.dart';
-import 'views/cart_page.dart';
+import 'models/theme.dart';
+import 'views/cart_screen.dart';
+import 'views/orders_screen.dart';
 import 'views/product_detail_screen.dart';
 import 'views/products_overview_screen.dart';
 
@@ -27,8 +29,11 @@ void main() {
           create: (_) => Products(),
         ),
         ChangeNotifierProvider(
-          create: (context) => CartModel(),
-        )
+          create: (_) => Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Orders(),
+        ),
       ],
       child: DynamicColorBuilder(
         builder: (lightDynamic, darkDynamic) => ThemeProvider(
@@ -52,10 +57,11 @@ class MyApp extends StatelessWidget {
       title: 'E Commerce App',
       debugShowCheckedModeBanner: false,
       theme: theme.light(settings.value.sourceColor),
-      home: const ProductsOverviewScreen(),
+      home: ProductsOverviewScreen(),
       routes: {
-        ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-        CartScreen.routeName: (ctx) => const CartScreen(),
+        ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+        CartScreen.routeName: (ctx) => CartScreen(),
+        OrdersScreen.routeName: (ctx) => OrdersScreen(),
       },
     );
   }
