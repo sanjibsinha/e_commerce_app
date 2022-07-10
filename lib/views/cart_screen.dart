@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './../models/cart.dart' show Cart;
-import './../controllers/cart_item.dart';
+import '../controllers/cart_item_page.dart';
 import './../models/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
+
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
