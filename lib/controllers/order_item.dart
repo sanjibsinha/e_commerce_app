@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import './../models/orders.dart' as ord;
+import './../models/orders.dart';
 
 class OrderItem extends StatefulWidget {
-  final ord.OrderItem order;
+  final OrderClass order;
 
   const OrderItem(this.order, {Key? key}) : super(key: key);
 
