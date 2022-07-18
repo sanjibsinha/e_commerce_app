@@ -6,7 +6,7 @@ import 'models/cart.dart';
 import 'models/orders.dart';
 import 'models/products.dart';
 import 'models/theme.dart';
-import 'views/cart_screen.dart';
+import 'views/cart_page.dart';
 import 'views/orders_screen.dart';
 import 'views/product_detail_page.dart';
 import 'views/e_commerce_home.dart';

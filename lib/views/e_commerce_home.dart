@@ -5,7 +5,7 @@ import './../controllers/app_drawer.dart';
 import './../controllers/products_grid.dart';
 import '../controllers/stack_cart.dart';
 import '../models/cart.dart';
-import './cart_screen.dart';
+import 'cart_page.dart';
 
 enum FilterOptions {
   favorites,
