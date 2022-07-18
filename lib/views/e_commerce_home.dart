@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './../controllers/app_drawer.dart';
+import '../controllers/app_drawer_controller.dart';
 import './../controllers/products_grid.dart';
-import '../controllers/stack_cart.dart';
+import '../controllers/stack_cart_controller.dart';
 import '../models/cart.dart';
 import 'cart_page.dart';
 
