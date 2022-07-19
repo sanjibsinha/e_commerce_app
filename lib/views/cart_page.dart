@@ -8,7 +8,9 @@ import './../models/orders.dart';
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
 
-  const CartScreen({Key? key}) : super(key: key);
+  CartScreen({Key? key}) : super(key: key);
+
+  final _messangerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,8 @@ class CartScreen extends StatelessWidget {
                         cart.totalAmount,
                       );
                       cart.clear();
+                      _messangerKey.currentState!.showSnackBar(
+                          const SnackBar(content: Text('Processing Data')));
                     },
                   )
                 ],
