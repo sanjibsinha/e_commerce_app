@@ -7,7 +7,7 @@ import 'models/orders.dart';
 import 'models/products.dart';
 import 'models/theme.dart';
 import 'views/cart_page.dart';
-import 'views/orders_screen.dart';
+import 'views/orders_page.dart';
 import 'views/product_detail_page.dart';
 import 'views/e_commerce_home.dart';
 
@@ -40,7 +40,7 @@ void main() {
           lightDynamic: lightDynamic,
           darkDynamic: darkDynamic,
           settings: settings,
-          child: const ECommerce(),
+          child: ECommerce(),
         ),
       ),
     ),
@@ -48,19 +48,21 @@ void main() {
 }
 
 class ECommerce extends StatelessWidget {
-  const ECommerce({Key? key}) : super(key: key);
+  ECommerce({Key? key}) : super(key: key);
+  final _messangerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
     final theme = ThemeProvider.of(context);
     return MaterialApp(
       title: 'E Commerce App',
+      scaffoldMessengerKey: _messangerKey,
       debugShowCheckedModeBanner: false,
       theme: theme.light(settings.value.sourceColor),
       home: const ECommerceHome(),
       routes: {
         ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
-        CartScreen.routeName: (ctx) => const CartScreen(),
+        CartScreen.routeName: (ctx) => CartScreen(),
         OrdersScreen.routeName: (ctx) => const OrdersScreen(),
       },
     );
